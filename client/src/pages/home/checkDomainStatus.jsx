@@ -109,7 +109,7 @@ const CheckDomainStatus = () => {
         <div className={styles.operator_detail_header_address}>
           <h3>Namada RPC status</h3>
           <span>
-            Available {pageRpcData.totalPassengers} Rpc can fetch data.
+            Checked {pageRpcData.totalPassengers} Rpc.
           </span>
         </div>
         <div className={styles.operator_detail_header_value}>
@@ -143,7 +143,7 @@ const CheckDomainStatus = () => {
       </div>
       <div className={styles.indexer_detail_header_address}>
         <h3>Namada Indexer status</h3>
-        <span>Available {pageRpcData.totalPassengers} Rpc can fetch data.</span>
+        <span>Checked {pageRpcData.totalPassengers} indexer.</span>
       </div>
 
       <div className={styles.table_content}>
