@@ -1,4 +1,4 @@
-export const API_URL = "http://localhost:4003";
+export const API_URL = "https://api.duongnm.online";
 export const API_GET_RPCS = API_URL + "/api/statusRpcs";
 export const API_GET_INDEXERS = API_URL + "/api/statusIndexers";
 export const RPC_URL = "https://rpc-namada.theamsolutions.info";
