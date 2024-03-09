@@ -158,32 +158,29 @@ const fetchApiData = (api) => {
 
 app.get("/api/statusRpcs", async (req, res) => {
   const domain = req.query.domain;
-
   if (domain === "all") {
     fs.readFile("./data.json", "utf8", async (err, jsonString) => {
       if (err) {
         console.log("Error reading file from disk:", err);
         return;
       }
-
       const urls = JSON.parse(jsonString);
       let promises = [];
 
-      for (let url of urls.rpcs) {
-        promises.push(fetchRpcData(url).then(result => {
-          res.write(JSON.stringify(result) + "\n"); // Send result as soon as it is ready
-        }));
+      for (let i = 0; i < urls.rpcs.length; i++) {
+        promises.push(fetchRpcData(urls.rpcs[i]));
       }
 
-      await Promise.all(promises);
-      res.end(); // Finish the response when all results were sent
+      Promise.all(promises)
+        .then((data) => res.send(data))
+        .catch((err) => console.log(err));
     });
   } else {
-    fetchRpcData(domain)
-        .then((data) => {
-          res.send(data); // Only one result, send it as before
-        })
-        .catch((err) => console.log(err));
+    let promises = [];
+    promises.push(fetchRpcData(domain));
+    Promise.all(promises)
+      .then((data) => res.send(data))
+      .catch((err) => console.log(err));
   }
 });
 
