@@ -56,7 +56,7 @@ const RpcStatus = () => {
 
   function loadRpcData() {
     Data.fetchRPCAndAPI(true).then((info) => {
-      const totalPassengers = info.length;
+      const totalPassengers = info?.length;
       setPageData({
         isLoading: false,
         rowData: info,
