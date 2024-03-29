@@ -1,5 +1,5 @@
 export const getDomain = () => {
-    return "http://localhost:4002"
+    return "https://rpc-monitor.duongnm.online"
 }
 export function isNumeric(str) {
     if (typeof str != "string") return false // we only process strings!
